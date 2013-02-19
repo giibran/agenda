@@ -1,21 +1,21 @@
 require 'rubygems'
 require 'debugger'
 class Person
-        attr_accessor :id, :name, :lastname, :phone
+        attr_accessor :id, :name, :lastname, :phone, :address
 
-        def initialize(id, name, lastname, phone)
+        def initialize(id, name, lastname, phone, address)
                 @id = id
                 @name = name
                 @lastname = lastname
                 @phone = phone
+                @address = address
         end
 end
 
 class Address
         attr_accessor :id, :address
 
-        def initialize(id, address)
-                @id = id
+        def initialize(address)
                 @address = address
         end
 end
@@ -35,7 +35,16 @@ class Agenda
           lastname = gets.chomp()
           puts "phone:"
           phone = gets.chomp()
-          @people << Person.new(id, name, lastname, phone)
+          one_more = "1"
+          addresses = []
+          while one_more == "1"
+            puts "address:"
+            address_temp = gets.chomp()
+            addresses << Address.new(address_temp)
+            puts " 1)add other address? \n 2) NO add"
+            one_more = gets.chomp()
+          end
+          @people << Person.new(id, name, lastname, phone, addresses)
         end
 
         def show_all()

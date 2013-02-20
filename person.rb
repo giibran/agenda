@@ -14,4 +14,8 @@ class Person
           #debugger
           #{}"#{name} : #{phone}"
         end
+
+        def print_pair
+        	info_pair = [id, name]
+        end
 end

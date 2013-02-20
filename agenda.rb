@@ -37,12 +37,24 @@ class Agenda
                 #debugger
         end
 
-        def edit_person()
-
+        def select_user()
+          @people.each { |item| puts item.print_pair() }
+           puts "choose an user id to action:"
+           choosen_id = gets.chomp()
+           choosen_id.to_i
         end
 
-        def delete_person()
+        def edit_person(id)
+           current_person = @people[id]
+           puts "name: #{current_person.name}"
+           puts "lastname: #{current_person.lastname}"
+           puts "phone: #{current_person.phone}"
+           puts "addresses: #{current_person.address}"
+        end
 
+        def delete_person(id)
+          @people.delete_at(id)
+          @people
         end
 
         def menu()
@@ -56,9 +68,11 @@ class Agenda
                 when "2"
                   show_all()
                 when "3"
-                  edit_person()
+                  selected_user = select_user()
+                  edit_person(selected_user)
                 when "4"
-                  delete_person()
+                  selected_user = select_user()
+                  delete_person(select_user)
                 when "5"
                   puts "SEE YOU LATER ALLIGATOR"                    
                 else
@@ -70,15 +84,3 @@ end
 
 agenda = Agenda.new()
 agenda.menu()
-
-=begin
-  
- person = Person.new
-                person.name = 'simon'
-                person.addresses = []
-
-                simona.each do |text|
-                        person.addresses << Address.new text
-                end 
-  
-=end

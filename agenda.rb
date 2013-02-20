@@ -1,24 +1,8 @@
 require 'rubygems'
 require 'debugger'
-class Person
-        attr_accessor :id, :name, :lastname, :phone, :address
 
-        def initialize(id, name, lastname, phone, address)
-                @id = id
-                @name = name
-                @lastname = lastname
-                @phone = phone
-                @address = address
-        end
-end
-
-class Address
-        attr_accessor :id, :address
-
-        def initialize(address)
-                @address = address
-        end
-end
+require './person.rb'
+require './address.rb'
 
 class Agenda 
         attr_accessor :people
@@ -48,8 +32,9 @@ class Agenda
         end
 
         def show_all()
-                @people.each { |current_person| puts current_person}
-                debugger
+                @people.each { |item| puts item.print_info() }
+                #@people.each { |key, current_person| puts "#{key}:  #{current_person}"}
+                #debugger
         end
 
         def edit_person()

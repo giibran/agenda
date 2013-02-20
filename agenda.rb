@@ -47,9 +47,30 @@ class Agenda
         def edit_person(id)
            current_person = @people[id]
            puts "name: #{current_person.name}"
+           puts "do you want change this value? \n1)Yes, 2)NO "
+           change_value = gets.chomp()
+           if change_value == "1"
+            puts("what is the new value?")
+            new_value = gets.chomp()
+            @people[id].name = new_value
+           end
            puts "lastname: #{current_person.lastname}"
+           puts "do you want change this value? \n1)Yes, 2)NO "
+           change_value = gets.chomp()
+           if change_value == "1"
+            puts("what is the new value?")
+            new_value = gets.chomp()
+            @people[id].lastname = new_value
+           end
            puts "phone: #{current_person.phone}"
-           puts "addresses: #{current_person.address}"
+           puts "do you want change this value? \n1)Yes, 2)NO "
+           change_value = gets.chomp()
+           if change_value == "1"
+            puts("what is the new value?")
+            new_value = gets.chomp()
+            @people[id].phone = new_value
+           end
+           puts "addresses: #{current_person.address.map{ |item| item.print_info() }.join(',')}"
         end
 
         def delete_person(id)

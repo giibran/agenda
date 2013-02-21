@@ -74,8 +74,11 @@ class Agenda
            while id_address != 99
             puts "addresses: "
             current_person.address.each_with_index.map{ |item, index| puts"#{index}) #{item.print_info()}" }
-            puts "#{current_person.address.length})add new address \n 99)exit address edit"
+            puts "#{current_person.address.length})add new address \n99)exit address edit"
             id_address = gets.chomp()
+            if id_address == "99"
+              break
+            end
             id_address = id_address.to_i
             puts "what is the new value?"
             new_value = gets.chomp()
@@ -109,7 +112,7 @@ class Agenda
                   edit_person(selected_user)
                 when "4"
                   selected_user = select_user()
-                  delete_person(select_user)
+                  delete_person(selected_user)
                 when "5"
                   puts "SEE YOU LATER ALLIGATOR"                    
                 else

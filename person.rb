@@ -10,12 +10,12 @@ class Person
         end
 
         def print_info()
-          info = [id, name, lastname, phone, address.map{ |item| item.print_info() }.join(',')]
-          #debugger
-          #{}"#{name} : #{phone}"
+          puts "Name: #{name} \nLastname: #{lastname} \nPhone: #{phone} \nAddress: "
+          address.map{ |item| item.print_info() }
+          puts "\n"
         end
 
         def print_pair
-        	info_pair = [id, name]
+        	puts "Id:#{id} #{name}"
         end
 end

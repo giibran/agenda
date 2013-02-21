@@ -6,6 +6,6 @@ class Address
         end
 
         def print_info()
-          info = address          
+          print address + "\n"         
         end
 end

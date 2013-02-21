@@ -32,13 +32,13 @@ class Agenda
         end
 
         def show_all()
-                @people.each { |item| puts item.print_info() }
+                @people.each { |item| item.print_info() }
                 #@people.each { |key, current_person| puts "#{key}:  #{current_person}"}
                 #debugger
         end
 
         def select_user()
-          @people.each { |item| puts item.print_pair() }
+          @people.each { |item| item.print_pair() }
            puts "choose an user id to action:"
            choosen_id = gets.chomp()
            choosen_id.to_i
@@ -70,7 +70,23 @@ class Agenda
             new_value = gets.chomp()
             @people[id].phone = new_value
            end
-           puts "addresses: #{current_person.address.map{ |item| item.print_info() }.join(',')}"
+           id_address = 0
+           while id_address != 99
+            puts "addresses: "
+            current_person.address.each_with_index.map{ |item, index| puts"#{index}) #{item.print_info()}" }
+            puts "#{current_person.address.length})add new address \n 99)exit address edit"
+            id_address = gets.chomp()
+            id_address = id_address.to_i
+            puts "what is the new value?"
+            new_value = gets.chomp()
+            if id_address == current_person.address.length
+              @people[id].address << Address.new(new_value)
+            else
+              @people[id].address[id_address].address = new_value
+            end
+            #debugger
+            @people
+           end
         end
 
         def delete_person(id)
